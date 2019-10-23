@@ -126,7 +126,7 @@ EOF
 ### `istio.io/istio` チャート
 
 helmfile および `istio.io/istio` チャートを利用して構築する。  
-なお、 `istio.io/istio` チャートを利用すると Prometheus 、 Grafana 、 Jeager 、 Kiali などもセットで構築できるが、ここでは Jeager 、 Kiali のみ追加で構築している。
+なお、 `istio.io/istio` チャートを利用すると Prometheus 、 Grafana 、 jaeger 、 Kiali などもセットで構築できるが、ここでは jaeger 、 Kiali のみ追加で構築している。
 
 ```zsh
 % helmfile -f helmfile.yaml apply
