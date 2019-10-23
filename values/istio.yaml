@@ -1,0 +1,75 @@
+
+global:
+  proxy:
+    accessLogFile: "/dev/stdout"
+    resources:
+      requests:
+        cpu: 10m
+        memory: 40Mi
+  disablePolicyChecks: false
+
+sidecarInjectorWebhook:
+  enabled: true
+  rewriteAppHTTPProbe: false
+
+pilot:
+  autoscaleEnabled: false
+  traceSampling: 100.0
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+
+mixer:
+  policy:
+    enabled: true
+    autoscaleEnabled: false
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+  telemetry:
+    enabled: true
+    autoscaleEnabled: false
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+  adapters:
+    stdio:
+      enabled: true
+
+grafana: # prometheus-operator にて設定する
+  enabled: false
+
+prometheus: # prometheus-operator にて設定する
+  enabled: false
+
+tracing:
+  enabled: true
+  ingress:
+    enabled: true
+  jaeger:
+    persist: true
+    accessMode: ReadWriteOnce
+
+kiali:
+  enabled: true
+  ingress:
+    enabled: true
+  createDemoSecret: true
+
+gateways:
+  enabled: true
+  istio-ingressgateway:
+    type: NodePort
+    autoscaleEnabled: false
+    resources:
+      requests:
+        cpu: 10m
+        memory: 40Mi
+
+global:
+  controlPlaneSecurityEnabled: false
+  mtls:
+    enabled: false

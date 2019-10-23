@@ -1,0 +1,28 @@
+repositories:
+  - name: elastic
+    url: https://helm.elastic.co
+  - name: kiwigrid
+    url: https://kiwigrid.github.io
+  - name: codecentric
+    url: https://codecentric.github.io/helm-charts
+
+releases:
+  # 前提として、istio-init が完了している必要がある
+  # https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio
+  - name: istio
+    namespace: istio-system
+    chart: istio.io/istio
+    values:
+    - ./values/istio.yaml
+  # https://github.com/kiwigrid/helm-charts/tree/master/charts/fluentd-elasticsearch
+  - name: fluentd
+    namespace: monitoring
+    chart: kiwigrid/fluentd-elasticsearch
+    values:
+    - ./values/fluentd.yaml
+  # https://github.com/kubernetes/charts/tree/master/stable/prometheus-operator
+  - name: prometheus-operator
+    namespace: monitoring
+    chart: stable/prometheus-operator
+    # values:
+    # - ./values/prometheus-operator.yaml
