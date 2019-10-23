@@ -162,6 +162,18 @@ Grafana の接続確認は以下。
 
 なお、 ID / Pass は admin / prom-operator 。
 
+## Fluentd 環境構築
+
+Amazon Elasticsearch Service へログ転送する想定で `kiwigrid/fluentd-elasticsearch` チャートを利用して構築する。
+
+### `kiwigrid/fluentd-elasticsearch` チャート
+
+`helmfile.yaml` に設定済みであれば先の `istio.io/istio` チャート 利用構築時の `helmfile -f helmfile.yaml apply` コマンドにて、 Prometheus Operator の構築も完了している。  
+なお、 Fluentd の挙動・設定は [configmap](https://github.com/kiwigrid/helm-charts/blob/master/charts/fluentd-elasticsearch/templates/configmaps.yaml) のコメントを参考。
+
+- `logstash-<yyyy.MM.dd>` でインデックスが作成される
+- namespace、pod名、コンテナ名が付与されるため、それで検索する
+
 ## 参考
 
 - Istio 公式
@@ -175,3 +187,5 @@ Grafana の接続確認は以下。
   - [IstioをHelmでインストールしてRoutingとTelemetryを行いJaeger/Kialiで確認する](https://www.sambaiz.net/article/185/)
 - Prometheus / Grafana
   - [サンプルで学ぶ！PromQLで自在にグラフを描こう (Prometheus + Grafana)](https://qiita.com/nekonok/items/4390a2db8be34da9d238)
+- AWS
+  - [k8s環境のメトリクスやログを取得するマネージドサービス「CloudWatch Container Insights」が発表されました！](https://dev.classmethod.jp/cloud/aws/cloudwatch-container-insights/)

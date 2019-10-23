@@ -19,7 +19,7 @@ releases:
     namespace: monitoring
     chart: kiwigrid/fluentd-elasticsearch
     values:
-    - ./values/fluentd.yaml
+    - ./values/fluentd-elasticsearch.yaml
   # https://github.com/kubernetes/charts/tree/master/stable/prometheus-operator
   - name: prometheus-operator
     namespace: monitoring
