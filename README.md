@@ -241,3 +241,5 @@ Amazon Elasticsearch Service へログ転送する想定で `kiwigrid/fluentd-el
   - [サンプルで学ぶ！PromQLで自在にグラフを描こう (Prometheus + Grafana)](https://qiita.com/nekonok/items/4390a2db8be34da9d238)
 - AWS
   - [k8s環境のメトリクスやログを取得するマネージドサービス「CloudWatch Container Insights」が発表されました！](https://dev.classmethod.jp/cloud/aws/cloudwatch-container-insights/)
+- kubernetes
+  - [docker / k8sのタイムゾーン変更](https://unicorn.limited/jp/item/782)
