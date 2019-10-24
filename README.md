@@ -174,6 +174,58 @@ Amazon Elasticsearch Service へログ転送する想定で `kiwigrid/fluentd-el
 - `logstash-<yyyy.MM.dd>` でインデックスが作成される
 - namespace、pod名、コンテナ名が付与されるため、それで検索する
 
+以下のような JSON に変換される。
+
+```javascript
+{
+  "_index": "logstash-2019.10.24",
+  "_type": "_doc",
+  "_id": "Rdre_G0BdMxRfkqXx0UD",
+  "_version": 1,
+  "_score": null,
+  "_source": {
+    "stream": "stderr",
+    "docker": {
+      "container_id": "4f518eb02d6b8ac2bcc7598bf09fc3c5d7286b3c1da7540eaf394ea478029423"
+    },
+    "kubernetes": {
+      "container_name": "mixer",
+      "namespace_name": "istio-system",
+      "pod_name": "istio-policy-759d4988df-k4z2x",
+      "container_image": "istio/mixer:1.3.1",
+      "container_image_id": "docker-pullable://istio/mixer@sha256:75877f06daaf7c9b2e20ca60e85e62a079b6f6da18e5ff538089c2e8cdd62f2e",
+      "pod_id": "46953cd9-ebce-11e9-83ab-0a06c6dc117a",
+      "host": "ip-10-0-65-77.ap-northeast-1.compute.internal",
+      "labels": {
+        "app": "policy",
+        "chart": "mixer",
+        "heritage": "Tiller",
+        "istio": "mixer",
+        "istio-mixer-type": "policy",
+        "pod-template-hash": "759d4988df",
+        "release": "istio"
+      },
+      "master_url": "https://172.20.0.1:443/api",
+      "namespace_id": "81183df5-eb3d-11e9-ad99-0ecda4b9e786",
+      "namespace_labels": {
+        "name": "istio-system"
+      }
+    },
+    "message": "scvg7630: inuse: 10, idle: 48, sys: 58, released: 47, consumed: 10 (MB)\n",
+    "@timestamp": "2019-10-24T08:25:15.134805206+00:00",
+    "tag": "kubernetes.var.log.containers.istio-policy-759d4988df-k4z2x_istio-system_mixer-4f518eb02d6b8ac2bcc7598bf09fc3c5d7286b3c1da7540eaf394ea478029423.log"
+  },
+  "fields": {
+    "@timestamp": [
+      "2019-10-24T08:25:15.134Z"
+    ]
+  },
+  "sort": [
+    1571905515134
+  ]
+}
+```
+
 ## 参考
 
 - Istio 公式
